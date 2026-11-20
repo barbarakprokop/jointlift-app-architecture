@@ -1,5 +1,7 @@
 # JointLift
 
+![JointLift iPhone interface montage](https://barbarakprokop.com/wp-content/uploads/2026/09/JL_MAIN2.png)
+
 **Two people. Two responsibilities. One shared commitment.**
 
 JointLift is a mobile accountability app designed to make it easier for two people to make progress together without turning a simple commitment into a project management system. I designed and built a React Native and Expo iOS MVP backed by Supabase authentication and shared data.
