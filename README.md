@@ -17,24 +17,25 @@ Each person owns one task. Both can see the other's progress, but completing you
 ## Architecture
 
 ```mermaid
-%%{init: {"theme": "base", "themeVariables": {"fontFamily":"Arial, Helvetica, sans-serif","fontSize":"15px","primaryColor":"#FFFFFF","primaryTextColor":"#111111","primaryBorderColor":"#111111","lineColor":"#555555","edgeLabelBackground":"#FFFFFF"}}}%%
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, Helvetica, sans-serif","fontSize":"15px","primaryColor":"#FF555A","primaryTextColor":"#FFFFFF","primaryBorderColor":"#FF555A","lineColor":"#858585","secondaryColor":"#858585","tertiaryColor":"#F0F0F0","edgeLabelBackground":"#FFFFFF"}}}%%
 flowchart TB
-    USER["01 / TWO PEOPLE<br/>Individual tasks and progress"] --> APP["REACT NATIVE / EXPO<br/>iOS product interface"]
-    APP --> AUTH["02 / SUPABASE AUTH<br/>Session and identity"]
-    APP --> DATA["03 / SHARED DATA<br/>Invitations and JointLifts"]
+    USER("01 / TWO PEOPLE<br/>Individual tasks and progress") --> APP("REACT NATIVE / EXPO<br/>iOS product interface")
+    APP --> AUTH("02 / SUPABASE AUTH<br/>Session and identity")
+    APP --> DATA("03 / SHARED DATA<br/>Invitations and JointLifts")
     DATA --> INVITE{"INVITATION STATUS"}
-    INVITE -->|Pending| WAIT["WAIT FOR PARTNER"]
-    INVITE -->|Accepted| ROOM["ACTIVE JOINTLIFT<br/>Two tasks, two completion states"]
+    INVITE -->|Pending| WAIT("WAIT FOR PARTNER")
+    INVITE -->|Accepted| ROOM("ACTIVE JOINTLIFT<br/>Two tasks, two completion states")
     ROOM --> COMPLETE{"BOTH FINISHED?"}
     COMPLETE -->|Not yet| ROOM
-    COMPLETE -->|Yes| DONE["SHARED COMPLETION"]
-    classDef ink fill:#111111,stroke:#111111,color:#FFFFFF,stroke-width:2px;
-    classDef outline fill:#FFFFFF,stroke:#111111,color:#111111,stroke-width:1.5px;
-    classDef muted fill:#F0F0F0,stroke:#777777,color:#111111,stroke-width:1.2px;
-    class USER,INVITE,COMPLETE ink;
-    class APP,AUTH,DATA,ROOM outline;
-    class WAIT,DONE muted;
-    linkStyle default stroke:#555555,stroke-width:1.5px;
+    COMPLETE -->|Yes| DONE("SHARED COMPLETION")
+    classDef primary fill:#FF555A,stroke:#FF555A,color:#FFFFFF,stroke-width:1.5px;
+    classDef secondary fill:#858585,stroke:#858585,color:#FFFFFF,stroke-width:1.2px;
+    classDef annotation fill:#F0F0F0,stroke:#C7C7C7,color:#111111,stroke-width:1px;
+    classDef future fill:#F0F0F0,stroke:#999999,color:#555555,stroke-width:1.2px,stroke-dasharray:5 4;
+    class USER,INVITE,COMPLETE primary;
+    class APP,AUTH,DATA,ROOM secondary;
+    class WAIT,DONE annotation;
+    linkStyle default stroke:#858585,stroke-width:1.5px;
 ```
 
 The diagram describes the conceptual flow observed in the mobile code, **not a security certification**. Supabase schema, deployed row level security policies and database migrations are not available in the inspected GitHub repository.
