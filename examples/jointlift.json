@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "scenario": "Two colleagues share a commitment",
+  "pending": {
+    "id": "example-1",
+    "user1Id": "alice",
+    "user2Id": "bob",
+    "user1Task": "Draft the proposal",
+    "user2Task": "",
+    "user1Done": false,
+    "user2Done": false,
+    "status": "pending"
+  },
+  "afterAcceptance": {
+    "user2Task": "Review the proposal",
+    "status": "active"
+  },
+  "completionRule": "Each person completes their own task; a shared completion requires both flags"
+}
